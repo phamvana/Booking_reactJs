@@ -5,12 +5,18 @@
 ## Installation
 
 How to run Project
-mpn i
-npm start
+
+\*npm init -y
+
+\*npm install express
+
+\*npm start
+\*npm install nodemon
 
 ## Node.js MongoDB Connection
 
 npm install mongodb
+
 npm i dotenv
 
 npm i mongoose
