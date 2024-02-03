@@ -16,6 +16,11 @@ const connect = async () => {
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected! -> Không thể kết nối với MongoDB.");
 });
+
+app.get("/", (req, res) => {
+  res.send("Đây là chương trình đầu tiên của tôi!");
+});
+
 app.listen(8800, () => {
   connect();
   console.log("Connected to backend...-> Kết nối với server thành công.");

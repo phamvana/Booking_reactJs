@@ -6,12 +6,12 @@
 
 How to run Project
 
-\*npm init -y
+npm init -y
 
-\*npm install express
+npm install express
 
-\*npm start
-\*npm install nodemon
+npm start
+npm install nodemon
 
 ## Node.js MongoDB Connection
 
@@ -20,3 +20,5 @@ npm install mongodb
 npm i dotenv
 
 npm i mongoose
+
+## Create Your First API using Node.js
