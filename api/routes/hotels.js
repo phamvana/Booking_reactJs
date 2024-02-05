@@ -30,10 +30,10 @@ router.put("/:id", async (req, res) => {
 //DELETE
 router.delete("/:id", async (req, res) => {
   try {
-    await Hotel.findByIdAndDelte(
+    await Hotel.findByIdAndDelete(
       req.params.id
     );
-    res.status(200).json("Hotel đã được xoá! Phạm Văn Á code");
+    res.status(200).json("Đã xoá dữ liệu!");
   } catch (err) {
     res.status(500).json(err);
   }
@@ -52,8 +52,7 @@ router.get("/:id", async (req, res) => {
 //GET ALL
 router.get("/", async (req, res) => {
   try {
-    const hotels = await Hotel.findById(
-      req.params.id
+    const hotels = await Hotel.find(
     );
     res.status(200).json(hotels);
   } catch (err) {
