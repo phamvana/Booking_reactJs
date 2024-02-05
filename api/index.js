@@ -29,6 +29,17 @@ app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errMessage = err.message || "Có một số lỗi xãy ra!";
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errMessage,
+    stack: err.stack,
+  });
+});
+
 app.get("/", (req, res) => {
   res.send("Đây là chương trình đầu tiên của tôi!");
 });

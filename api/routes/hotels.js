@@ -1,5 +1,6 @@
 import express from "express";
 import Hotel from "../models/Hotel.js";
+import { createError } from "../utils/error.js";
 
 const router = express.Router();
 //CREATE
@@ -30,9 +31,7 @@ router.put("/:id", async (req, res) => {
 //DELETE
 router.delete("/:id", async (req, res) => {
   try {
-    await Hotel.findByIdAndDelete(
-      req.params.id
-    );
+    await Hotel.findByIdAndDelete(req.params.id);
     res.status(200).json("Đã xoá dữ liệu!");
   } catch (err) {
     res.status(500).json(err);
@@ -41,22 +40,24 @@ router.delete("/:id", async (req, res) => {
 //GET
 router.get("/:id", async (req, res) => {
   try {
-    const hotel = await Hotel.findById(
-      req.params.id
-    );
+    const hotel = await Hotel.findById(req.params.id);
     res.status(200).json(hotel);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 //GET ALL
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
+  const failed = true;
+  const err = new Error();
+  err.status = 404;
+  err.message = "Xin lỗi không thể tìm thấy!";
+  if (failed) return next(createError(401, "Bạn chưa được xác minh!!"));
   try {
-    const hotels = await Hotel.find(
-    );
+    const hotels = await Hotel.find();
     res.status(200).json(hotels);
   } catch (err) {
-    res.status(500).json(err);
+    next(err);
   }
 });
 
