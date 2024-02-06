@@ -23,4 +23,12 @@ npm i mongoose
 
 ## Create Your First API using Node.js
 
+Tạo api đầu tiên. http://localhost:8800/
+
 ## Node.js MongoDB CRUD Operations
+
+Thêm, sửa, xoá, cập nhật Hotel
+
+## Node MongoDB Authentication (Login / Register)
+
+npm i bcryptjs
