@@ -11,6 +11,7 @@ import cors from "cors";
 const app = express();
 dotenv.config();
 
+//Kết nối với MongoDB
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
@@ -20,6 +21,7 @@ const connect = async () => {
   }
 };
 
+//Kiểm tra kết nối
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected!");
 });
@@ -36,7 +38,7 @@ app.use("/api/rooms", roomsRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
-  const errorMessage = err.message || "Something went wrong!";
+  const errorMessage = err.message || "Something went wrong | Có lỗi xãy ra!";
   return res.status(errorStatus).json({
     success: false,
     status: errorStatus,
@@ -44,8 +46,8 @@ app.use((err, req, res, next) => {
     stack: err.stack,
   });
 });
-
-app.listen(8800, () => {
+//Kết nối với server
+app.listen(process.env.PORT, () => {
   connect();
   console.log("Connected to backend | Kết nối với backend thành công!.");
 });
