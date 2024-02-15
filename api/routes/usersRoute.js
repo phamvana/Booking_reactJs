@@ -8,6 +8,7 @@ import {
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router();
+
 //UPDATE
 router.put("/:id", verifyUser, updateUser);
 
